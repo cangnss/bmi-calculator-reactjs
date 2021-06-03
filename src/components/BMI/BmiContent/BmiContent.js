@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import {MainTextDiv,TextDiv,MainButtonDiv,Input,Button,Result,ResultDescription} from '../../../styles/Calculate/Calculate'
+
 function BmiContent() {
 
     const [calculate, setCalculate] = useState(0);
@@ -7,60 +9,6 @@ function BmiContent() {
     useEffect(()=>{
 
     },[]);
-
-    const MainTextDiv = styled.div`
-        display:flex;
-        flex-direction: column;
-        text-align:center;
-        margin-left:550px;
-    `;
-
-    const TextDiv = styled.span`
-        width: 200px;
-        height: 50px;
-        color:black;
-        padding:10px;
-        margin-bottom: 15px;
-        font-family:'Source Sans Pro', sans-serif;
-        font-weight: bold;
-        font-size: 32px;
-    `;
-
-    const Input = styled.input`
-        width:200px;
-        height:30px;
-        border-radius: 5px;
-
-    `;
-
-    const Button = styled.button`
-        width:200px;
-        height:50px;
-        background-color: ${props => props.primary ? 'green' : 'red'};
-        color:white;
-        font-size: 18px;
-        font-weight:bold;
-        border:none;
-        border-radius:5px;
-        font-family: 'Source Sans Pro', sans-serif;
-        margin-right:5px;
-    `;
-
-    const MainButtonDiv = styled.div`
-        margin-left: 470px;
-        margin-top:50px;
-    `;
-
-    const Result = styled.span`
-        font-size:24px;
-        margin-left: 650px;
-        font-weight:bold;
-    `;
-
-    const ResultDescription = styled.div`
-        font-size:24px;
-        margin-left: 520px;
-    `;
 
     function bmiCalculate() {
         const weight = document.getElementById('weight').value;
@@ -95,29 +43,41 @@ function BmiContent() {
                 </Button>
             </MainButtonDiv>
             <Result>
-                {calculate}
+                {calculate !== 'NaN' ? calculate : 'Lütfen değer giriniz'}
             </Result>
             <ResultDescription>
-                
-                { calculate<18.5 && 
-                    <h1>
-                        Underweight
-                    </h1>
+                { calculate !== 0 && calculate<18.5 && 
+                    <div>
+                        <h4>
+                            Underweight
+                        </h4>
+                        <Link to="/">Underweight diyet listesi için..</Link>
+                    </div>
                 }
-                {   calculate>18.5 && calculate<24.9 &&
-                    <h1>
-                    Healthy Weight
-                    </h1>
+                {   calculate !== 0 && calculate>18.5 && calculate<24.9 &&
+                    <div>
+                        <h4>
+                        Healthy Weight
+                        </h4>
+                        <Link to="/">Healthy Weight diyet listesi için..</Link>
+                    </div>
+                    
                 }
-                {   calculate>25 && calculate<29.9 &&
-                    <h1>
-                    Healthy Weight
-                    </h1>
+                {   calculate !== 0 && calculate>25 && calculate<29.9 &&
+                    <div>
+                        <h4>
+                        Overweight
+                        </h4>
+                        <Link to="/">Overweight diyet listesi için..</Link>
+                    </div>
                 }
-                {   calculate==30 &&
-                    <h1>
-                    Healthy Weight
-                    </h1>
+                {   calculate !== 0 && calculate>30 &&
+                    <div>
+                        <h4>
+                        Obese
+                        <Link to="/">Obese diyet listesi için..</Link>
+                        </h4>
+                    </div>
                 }
             </ResultDescription>
         </div>
