@@ -39,7 +39,7 @@ export const Button = styled.button`
     `;
 
 export const MainButtonDiv = styled.div`
-        margin-left: 470px;
+        margin-left: 380px;
         margin-top:50px;
     `;
 
