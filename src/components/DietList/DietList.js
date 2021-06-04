@@ -28,11 +28,14 @@ function DietList() {
     return (
         <DietListDiv>
             {diets.map((diet)=>{
+                console.log(diet)
                 if(diet.id === 1){
                 return(
                     <div key={diet.id}>
                         <DietListTitle>BREAKFAST</DietListTitle>
                         <p>{diet.breakfast}</p>
+                        <DietListTitle>LUNCH</DietListTitle>
+                        <p>{diet.lunch}</p>
                         <DietListTitle>SNACK LUNCH</DietListTitle>
                         <p>{diet.snackLunch}</p>
                         <DietListTitle>DINNER</DietListTitle>

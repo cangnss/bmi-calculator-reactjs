@@ -6,7 +6,6 @@ import './BmiContent.css';
 function BmiContent() {
 
     const [calculate, setCalculate] = useState(0);
-    const [results, setResults] = useState([]);
 
     useEffect(() => {
         localStorage.getItem('bmi');
@@ -17,7 +16,7 @@ function BmiContent() {
         const height = document.getElementById('height').value;
         const result = ((parseInt(weight) * parseInt(weight)) / parseInt(height)).toFixed(2);
         setCalculate(result);
-        // addLocalStorage(result);
+        addLocalStorage(result);
     }
 
     function clearInput() {
@@ -27,21 +26,22 @@ function BmiContent() {
         height.value = "";
     }
 
-    // function addLocalStorage(rs) {
-    //     let bmis = getBmis()
-    //     setResults(bmis.concat(rs));
-    //     localStorage.setItem('bmis', JSON.stringify(rs))
-    // }
+    function addLocalStorage(rs) {
+        let bmis = getBmis()
+        bmis.concat(rs);
+        localStorage.setItem('bmi',JSON.stringify(bmis));
+    }
 
-    // function getBmis() {
-    //     let bmis = []
-    //     if (localStorage.getItem('bmi') === null) {
-    //         bmis = []
-    //     } else {
-    //         bmis = JSON.parse(localStorage.getItem('bmi'))
-    //     }
-    //     return bmis
-    // }
+    function getBmis() {
+        let bmis = []
+        if (localStorage.getItem('bmi') === null) {
+            bmis = []
+        } else {
+            bmis = JSON.parse(localStorage.getItem('bmi'))
+        }
+        return bmis
+    }
+
     return (
         <div>
             <MainTextDiv>
