@@ -28,7 +28,7 @@ function BmiContent() {
 
     function addLocalStorage(rs) {
         let bmis = getBmis()
-        bmis.concat(rs);
+        bmis.push(rs)
         localStorage.setItem('bmi',JSON.stringify(bmis));
     }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
 import {DietListDiv,DietListTitle} from '../../styles/DietList/DietList';
 
 const diets = [
@@ -25,11 +26,12 @@ const diets = [
 ];
 
 function DietList() {
+    const params = useParams();//linkten gelen id'yi almak için kullandım.
+    console.log(params);
     return (
         <DietListDiv>
             {diets.map((diet)=>{
-                console.log(diet)
-                if(diet.id === 1){
+                if(diet.id === +params.id){
                 return(
                     <div key={diet.id}>
                         <DietListTitle>BREAKFAST</DietListTitle>

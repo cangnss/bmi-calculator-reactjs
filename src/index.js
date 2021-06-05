@@ -11,7 +11,7 @@ ReactDOM.render(
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/bmi" component={Bmi} />
-      <Route path="/dietlist/1" component={DietList} />
+      <Route path="/dietlist/:id" component={DietList} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
